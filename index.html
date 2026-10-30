@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Browser TTS / STT Bench</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <h1>Browser TTS / STT Bench</h1>
+        <p class="lede">
+          Runs small speech models fully in your browser (WebGPU when available, WASM fallback).
+          Models download only when you tap Run. No audio leaves the device.
+        </p>
+        <div id="caps" class="caps" aria-live="polite">Detecting capabilities…</div>
+      </header>
+
+      <section class="card">
+        <h2>Speech-to-text</h2>
+        <p class="hint">Sample clip: JFK excerpt (~4 s, 16 kHz mono). Or record from the mic.</p>
+        <div class="row">
+          <button type="button" id="btn-play-sample">Play sample</button>
+          <button type="button" id="btn-rec">Record 4 s</button>
+          <audio id="preview" controls class="preview"></audio>
+        </div>
+        <div class="checks" id="stt-checks"></div>
+        <button type="button" class="primary" id="btn-run-stt">Run STT</button>
+        <pre id="stt-status" class="status"></pre>
+      </section>
+
+      <section class="card">
+        <h2>Text-to-speech</h2>
+        <label class="block">
+          Prompt
+          <textarea id="tts-text" rows="3">The quick brown fox jumps over the lazy dog. Browser speech models are getting fast.</textarea>
+        </label>
+        <div class="checks" id="tts-checks"></div>
+        <button type="button" class="primary" id="btn-run-tts">Run TTS</button>
+        <pre id="tts-status" class="status"></pre>
+        <audio id="tts-preview" controls class="preview"></audio>
+      </section>
+
+      <section class="card">
+        <h2>Results</h2>
+        <div class="table-wrap">
+          <table id="results">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Task</th>
+                <th>Device</th>
+                <th>Load ms</th>
+                <th>First out ms</th>
+                <th>Infer ms</th>
+                <th>Audio s</th>
+                <th>RTF</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="row">
+          <button type="button" id="btn-copy">Copy results as JSON</button>
+          <button type="button" id="btn-clear">Clear</button>
+          <span id="copy-ok" class="ok" hidden>Copied</span>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          Repo:
+          <a href="https://github.com/knybbe/browser-tts-stt-bench">knybbe/browser-tts-stt-bench</a>
+          · Models from Hugging Face onnx-community · MIT / Apache-2.0
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "browser-tts-stt-bench",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.7.2",
+    "kitten-tts-js": "^0.1.2",
+    "kokoro-js": "^1.2.1"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
